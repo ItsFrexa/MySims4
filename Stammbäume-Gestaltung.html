@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stammbäume - ItsFrexa</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Formular für das Erstellen eines Stammbaues -->
+  <section class="stammbaum-erstellen">
+    <div class="container">
+      <h2>Stammbaum erstellen</h2>
+      <form id="stammbaum-form">
+        <label for="name">Name des Familienmitglieds:</label>
+        <input type="text" id="name" required />
+
+        <label for="beziehung">Beziehung (z.B. Eltern, Kind, etc.):</label>
+        <input type="text" id="beziehung" required />
+
+        <button type="submit">Familienmitglied hinzufügen</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Bereich für den generierten Stammbaum -->
+  <section class="generierter-stammbaum">
+    <div class="container">
+      <h2>Generierter Stammbaum</h2>
+      <div id="stammbaum-container"></div>
+    </div>
+  </section>
+
+  <script>
+    // JavaScript zum Erstellen und Anzeigen des Stammbaues
+    document.getElementById("stammbaum-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const beziehung = document.getElementById("beziehung").value;
+      const stammbaumContainer = document.getElementById("stammbaum-container");
+
+      const familienMitgliedDiv = document.createElement("div");
+      familienMitgliedDiv.classList.add("mitglied");
+      familienMitgliedDiv.innerHTML = `<p><strong>Name:</strong> ${name} <br> <strong>Beziehung:</strong> ${beziehung}</p>`;
+
+      stammbaumContainer.appendChild(familienMitgliedDiv);
+
+      document.getElementById("name").value = "";
+      document.getElementById("beziehung").value = "";
+    });
+  </script>
+</body>
+</html>
